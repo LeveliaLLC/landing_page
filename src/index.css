@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Estilos globales y scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-200 antialiased;
+}
