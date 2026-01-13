@@ -1,4 +1,4 @@
-name: Deploy landing Vite to Github Pages
+name: Deploy landing Vite to Github Pages legacy
 
 # cuando desplegar
 on:
