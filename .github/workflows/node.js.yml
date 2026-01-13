@@ -1,0 +1,55 @@
+name: Deploy landing Vite to Github Pages
+
+# cuando desplegar
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# permisos para desplegar
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # revision inicial
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # version de node a usar
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    # instalar dependencias
+    - name: Install dependencies
+      run: npm ci
+
+    # Construir proyecto
+    - name: Build
+      run: npm run build
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./dist
+
+  # Despliegue
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
