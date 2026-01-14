@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { useScroll, useSpring, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { Code2, Rocket, Layout, ArrowRight, Menu, X, Github, Linkedin, Mail, Cpu, Globe, Terminal, ChevronDown, Target, Eye } from 'lucide-react';
 
 // --- UTILIDADES UI ---
